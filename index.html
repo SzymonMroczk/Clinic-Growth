@@ -378,7 +378,7 @@
       position: relative;
       padding: 0;
       border-radius: 24px;
-      min-height: 150px;
+      min-height: 250px;
       overflow: hidden;
       transition: 0.22s ease;
       background: linear-gradient(180deg, #ffffff 0%, #fcfcfd 100%);
@@ -398,11 +398,12 @@
     }
 
     .popular-card-inner {
-      min-height: 150px;
+      min-height: 250px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 24px 20px;
+      justify-content: flex-start;
+      padding: 28px 22px;
       text-align: center;
     }
 
@@ -412,6 +413,13 @@
       letter-spacing: -0.015em;
       font-weight: 700;
       margin: 0;
+    }
+
+    .popular-card p {
+      margin-top: 18px;
+      font-size: 15px;
+      line-height: 1.72;
+      color: var(--muted);
     }
 
     .image-and-copy {
@@ -837,12 +845,38 @@
         </p>
 
         
+        
         <div class="popular-grid">
-          <article class="popular-card"><div class="popular-card-inner"><strong>Liposukcja</strong></div></article>
-          <article class="popular-card"><div class="popular-card-inner"><strong>Powiększanie piersi</strong></div></article>
-          <article class="popular-card"><div class="popular-card-inner"><strong>Plastyka brzucha</strong></div></article>
-          <article class="popular-card"><div class="popular-card-inner"><strong>Lifting piersi</strong></div></article>
-          <article class="popular-card"><div class="popular-card-inner"><strong>Plastyka powiek</strong></div></article>
+          <article class="popular-card">
+            <div class="popular-card-inner">
+              <strong>Liposukcja</strong>
+              <p>Warto postawić na spokojną komunikację korzyści, dopracowany przekaz premium i kampanię kierującą na konkretną konsultację.</p>
+            </div>
+          </article>
+          <article class="popular-card">
+            <div class="popular-card-inner">
+              <strong>Powiększanie piersi</strong>
+              <p>Najczęściej dobrze działa precyzyjne pozycjonowanie usługi, budowanie zaufania oraz uporządkowany proces prowadzenia klientki do rozmowy.</p>
+            </div>
+          </article>
+          <article class="popular-card">
+            <div class="popular-card-inner">
+              <strong>Plastyka brzucha</strong>
+              <p>W tym przypadku warto zadbać o jasną komunikację, odpowiedni dobór grupy docelowej i kierowanie ruchu na dobrze przygotowaną ofertę.</p>
+            </div>
+          </article>
+          <article class="popular-card">
+            <div class="popular-card-inner">
+              <strong>Lifting piersi</strong>
+              <p>Tu zwykle istotne jest budowanie wiarygodności, spokojny przekaz oraz działania nastawione na jakościowe zapytania i konsultacje.</p>
+            </div>
+          </article>
+          <article class="popular-card">
+            <div class="popular-card-inner">
+              <strong>Plastyka powiek</strong>
+              <p>Najczęściej warto skupić się na czytelnej komunikacji usługi, dobrym pierwszym wrażeniu marki i kampanii wspierającej decyzję o kontakcie.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
