@@ -375,15 +375,43 @@
     }
 
     .popular-card {
-      padding: 20px 18px;
-      border-radius: 22px;
-      min-height: 190px;
+      position: relative;
+      padding: 0;
+      border-radius: 24px;
+      min-height: 150px;
+      overflow: hidden;
+      transition: 0.22s ease;
+      background: linear-gradient(180deg, #ffffff 0%, #fcfcfd 100%);
+    }
+
+    .popular-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(190,136,53,0.95), rgba(231,194,122,0.45));
+    }
+
+    .popular-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(182,132,54,0.25);
+    }
+
+    .popular-card-inner {
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+      text-align: center;
     }
 
     .popular-card strong {
-      font-size: 17px;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
+      font-size: 20px;
+      line-height: 1.18;
+      letter-spacing: -0.015em;
+      font-weight: 700;
+      margin: 0;
     }
 
     .image-and-copy {
@@ -771,7 +799,7 @@
           </div>
           <div class="stat-box">
             <strong>Bezpieczna komunikacja</strong>
-            <span>Treści i kreacje budujemy w sposób spójny z charakterem kliniki i ograniczeniami branży medycznej.</span>
+            <span>Treści i kreacje budujemy w sposób spójny z charakterem kliniki, ograniczeniami branży medycznej i obecnie obowiązującymi przepisami prawa.</span>
           </div>
           <div class="stat-box">
             <strong>Kontrola nad wynikami</strong>
@@ -786,7 +814,7 @@
         <div class="section-label">Zakres współpracy</div>
         <h2>Co możemy zrobić dla Twojej kliniki</h2>
         <p class="section-subtitle" style="margin-left:0; margin-right:0; max-width:900px;">
-          Przygotowujemy działania tak, aby klinika nie tylko miała więcej zapytań, ale też lepiej rozumiała, które usługi warto promować i jak prowadzić pacjenta od pierwszego kontaktu do konsultacji.
+          Pomagamy klinikom uporządkować działania marketingowe tak, aby cały proces pozyskiwania klientów był bardziej spójny, przewidywalny i dopasowany do charakteru marki.
         </p>
 
         <div class="services-grid">
@@ -803,17 +831,18 @@
     <section class="section alt-2 center" id="zabiegi">
       <div class="container">
         <div class="section-label">Najpopularniejsze zabiegi</div>
-        <h2>Usługi, które najczęściej warto rozważyć w promocji</h2>
+        <h2>Usługi które promujemy najczęściej</h2>
         <p class="section-subtitle">
-          Wśród najpopularniejszych zabiegów chirurgii estetycznej bardzo często pojawiają się liposukcja, powiększanie piersi, plastyka brzucha, lifting piersi i plastyka powiek. To właśnie wokół takich usług zwykle buduje się pierwsze kampanie reklamowe.
+          Najczęściej promujemy usługi, które są popularne, dobrze rozpoznawalne i mają duży potencjał sprzedażowy. Poniżej przykłady zabiegów, wokół których najczęściej budujemy kampanie.
         </p>
 
+        
         <div class="popular-grid">
-          <article class="popular-card"><strong>Liposukcja</strong><p>Jedna z najczęściej wykonywanych procedur. Dobrze sprawdza się w kampaniach nastawionych na konkretne potrzeby i szybkie zapytania.</p></article>
-          <article class="popular-card"><strong>Powiększanie piersi</strong><p>Usługa bardzo popularna i silnie konkurencyjna, dlatego wymaga dopracowanej komunikacji i mocnego wizerunku kliniki.</p></article>
-          <article class="popular-card"><strong>Plastyka brzucha</strong><p>Często rozważana po ciąży lub po większej zmianie sylwetki. Dobrze działa w kampaniach opartych na konkretnej przemianie.</p></article>
-          <article class="popular-card"><strong>Lifting piersi</strong><p>Usługa wymagająca precyzyjnej komunikacji, bo pacjentki często są na etapie porównywania różnych możliwości zabiegowych.</p></article>
-          <article class="popular-card"><strong>Plastyka powiek</strong><p>Zabieg bardzo popularny i często poszukiwany. Kampanie dobrze działają, gdy przekaz jest jasny, profesjonalny i spokojny.</p></article>
+          <article class="popular-card"><div class="popular-card-inner"><strong>Liposukcja</strong></div></article>
+          <article class="popular-card"><div class="popular-card-inner"><strong>Powiększanie piersi</strong></div></article>
+          <article class="popular-card"><div class="popular-card-inner"><strong>Plastyka brzucha</strong></div></article>
+          <article class="popular-card"><div class="popular-card-inner"><strong>Lifting piersi</strong></div></article>
+          <article class="popular-card"><div class="popular-card-inner"><strong>Plastyka powiek</strong></div></article>
         </div>
       </div>
     </section>
