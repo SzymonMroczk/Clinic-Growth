@@ -320,109 +320,83 @@
 
     .stat-box,
     .service-card,
-    .popular-card {
-      border: 1px solid var(--line);
-      background: #ffffff;
-      box-shadow: var(--shadow);
-    }
-
-    .stat-box {
-      padding: 28px;
-      border-radius: var(--radius-lg);
-    }
-
-    .stat-box strong,
-    .popular-card strong,
-    .process-note strong {
-      display: block;
-      color: var(--gold);
-      letter-spacing: -0.03em;
-    }
-
-    .stat-box strong { font-size: 24px; margin-bottom: 18px; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
-
-    .service-card {
-      padding: 26px;
-      border-radius: 28px;
-      min-height: 190px;
-      transition: 0.25s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      background: #ffffff;
-      border-color: rgba(182,132,54,0.25);
-    }
-
-    .service-no {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(182,132,54,0.12);
-      color: var(--gold);
-      font-weight: 900;
-      font-size: 15px;
-    }
-
-    .service-card p,
-    .popular-card p {
-      margin-top: 12px;
-      line-height: 1.68;
-      font-size: 15px;
-      color: var(--muted);
-    }
 
     .popular-card {
       position: relative;
       padding: 0;
-      border-radius: 24px;
-      min-height: 190px;
+      border-radius: 28px;
+      min-height: 182px;
       overflow: hidden;
-      transition: 0.22s ease;
-      background: linear-gradient(180deg, #ffffff 0%, #fcfcfd 100%);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(182,132,54,0.12), transparent 40%),
+        linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+      box-shadow: var(--shadow);
     }
 
     .popular-card::before {
       content: "";
       position: absolute;
-      inset: 0 0 auto 0;
-      height: 4px;
-      background: linear-gradient(90deg, rgba(190,136,53,0.95), rgba(231,194,122,0.45));
+      left: 22px;
+      right: 22px;
+      bottom: 18px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(182,132,54,0.45), rgba(182,132,54,0.08));
+    }
+
+    .popular-card::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      bottom: -18px;
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: rgba(182,132,54,0.07);
     }
 
     .popular-card:hover {
       transform: translateY(-4px);
       border-color: rgba(182,132,54,0.25);
+      box-shadow: 0 24px 48px rgba(15, 23, 42, 0.10);
     }
 
     .popular-card-inner {
-      min-height: 190px;
+      position: relative;
+      z-index: 1;
+      min-height: 182px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .popular-index {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
       align-items: center;
-      justify-content: flex-start;
-      padding: 22px 18px;
-      text-align: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: rgba(182,132,54,0.12);
+      color: var(--gold);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
     .popular-card strong {
-      font-size: 18px;
+      max-width: 88%;
+      font-size: 20px;
       line-height: 1.18;
-      letter-spacing: -0.015em;
+      letter-spacing: -0.02em;
       font-weight: 700;
       margin: 0;
+      text-align: left;
     }
 
-    .popular-card p {
-      margin-top: 14px;
-      font-size: 14px;
-      line-height: 1.55;
-      color: var(--muted);
-    }
-
-    .image-and-copy {
+.image-and-copy {
       margin-top: 42px;
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -846,35 +820,36 @@
 
         
         
+        
         <div class="popular-grid">
           <article class="popular-card">
             <div class="popular-card-inner">
+              <span class="popular-index">01</span>
               <strong>Liposukcja</strong>
-              <p>Warto skupić przekaz na konsultacji, zaufaniu i konkretnym problemie klienta.</p>
             </div>
           </article>
           <article class="popular-card">
             <div class="popular-card-inner">
+              <span class="popular-index">02</span>
               <strong>Powiększanie piersi</strong>
-              <p>Dobrze działa spokojna komunikacja, mocny wizerunek i jasna ścieżka kontaktu.</p>
             </div>
           </article>
           <article class="popular-card">
             <div class="popular-card-inner">
+              <span class="popular-index">03</span>
               <strong>Plastyka brzucha</strong>
-              <p>Tu ważne są precyzyjna grupa odbiorców, dobra oferta i profesjonalna strona.</p>
             </div>
           </article>
           <article class="popular-card">
             <div class="popular-card-inner">
+              <span class="popular-index">04</span>
               <strong>Lifting piersi</strong>
-              <p>Warto budować wiarygodność i prowadzić klientkę do rozmowy bez nachalnej sprzedaży.</p>
             </div>
           </article>
           <article class="popular-card">
             <div class="popular-card-inner">
+              <span class="popular-index">05</span>
               <strong>Plastyka powiek</strong>
-              <p>Najczęściej liczy się prosty przekaz, dobre pierwsze wrażenie i szybki kontakt.</p>
             </div>
           </article>
         </div>
