@@ -1,884 +1,826 @@
 <!doctype html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Clinic Growth pomaga klinikom chirurgii estetycznej pozyskiwać wartościowe zapytania dzięki kampaniom Meta Ads, Google Ads, landing page i uporządkowanemu procesowi obsługi leadów." />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clinic Growth | Marketing dla klinik chirurgii estetycznej</title>
-    <link rel="icon" href="/favicon.svg" />
-    <style>
-      :root {
-        --bg: #080b13;
-        --bg2: #0f172a;
-        --card: rgba(255, 255, 255, 0.075);
-        --cardStrong: rgba(255, 255, 255, 0.11);
-        --text: #f8fafc;
-        --muted: #b9c1d4;
-        --gold: #c49a4a;
-        --gold2: #f4d48b;
-        --navy: #071d34;
-        --line: rgba(255, 255, 255, 0.13);
-        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-      }
-
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-
-      body {
-        margin: 0;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background:
-          radial-gradient(circle at 15% 10%, rgba(196, 154, 74, 0.18), transparent 32rem),
-          radial-gradient(circle at 85% 0%, rgba(32, 65, 104, 0.32), transparent 30rem),
-          var(--bg);
-        color: var(--text);
-      }
-
-      a { color: inherit; text-decoration: none; }
-      main { overflow: hidden; }
-
-      .hero {
-        min-height: 100vh;
-        padding: 28px clamp(20px, 5vw, 72px) 80px;
-        position: relative;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(90deg, rgba(8, 11, 19, 0.97) 0%, rgba(8, 11, 19, 0.84) 46%, rgba(8, 11, 19, 0.44) 100%),
-          url("/assets/photo2.jpg") center right / cover no-repeat;
-        z-index: -2;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: auto 0 0;
-        height: 260px;
-        background: linear-gradient(180deg, transparent, var(--bg));
-        z-index: -1;
-      }
-
-      .nav {
-        max-width: 1180px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 16px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: rgba(8, 12, 24, 0.64);
-        backdrop-filter: blur(20px);
-        position: relative;
-        z-index: 5;
-      }
-
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-      }
-
-      .brand img {
-        width: 48px;
-        height: 48px;
-        object-fit: contain;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.96);
-        padding: 4px;
-      }
-
-      .navLinks {
-        display: flex;
-        gap: 24px;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .navLinks a:hover { color: var(--text); }
-
-      .heroGrid {
-        max-width: 1180px;
-        margin: 92px auto 0;
-        display: grid;
-        grid-template-columns: 1.02fr 0.98fr;
-        gap: 56px;
-        align-items: center;
-      }
-
-      .eyebrow,
-      .sectionLabel {
-        width: fit-content;
-        padding: 9px 14px;
-        border: 1px solid rgba(244, 212, 139, 0.42);
-        border-radius: 999px;
-        color: var(--gold2);
-        background: rgba(196, 154, 74, 0.12);
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-      }
-
-      h1, h2, h3, p { margin: 0; }
-
-      h1 {
-        margin-top: 22px;
-        max-width: 760px;
-        font-size: clamp(44px, 6.7vw, 84px);
-        line-height: 0.94;
-        letter-spacing: -0.075em;
-      }
-
-      .heroText > p {
-        margin-top: 28px;
-        max-width: 650px;
-        color: var(--muted);
-        font-size: clamp(17px, 2vw, 21px);
-        line-height: 1.65;
-      }
-
-      .heroActions {
-        margin-top: 36px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .button,
-      button {
-        border: 0;
-        border-radius: 999px;
-        padding: 17px 24px;
-        font-weight: 800;
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      }
-
-      .button:hover,
-      button:hover { transform: translateY(-2px); }
-
-      .primary,
-      button {
-        background: linear-gradient(135deg, var(--gold2), #a97829);
-        color: #111827;
-        box-shadow: 0 18px 50px rgba(196, 154, 74, 0.30);
-      }
-
-      .secondary {
-        background: rgba(255, 255, 255, 0.08);
-        color: var(--text);
-        border: 1px solid var(--line);
-      }
-
-      .trust {
-        margin-top: 30px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .trust span {
-        padding: 10px 13px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        color: var(--muted);
-        font-size: 13px;
-        background: rgba(255, 255, 255, 0.045);
-      }
-
-      .heroVisual {
-        min-height: 560px;
-        position: relative;
-        display: grid;
-        place-items: center;
-      }
-
-      .photoStack {
-        position: relative;
-        width: min(100%, 490px);
-        min-height: 560px;
-      }
-
-      .photoMain {
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 78%;
-        height: 460px;
-        border-radius: 38px;
-        object-fit: cover;
-        border: 1px solid rgba(255,255,255,0.16);
-        box-shadow: var(--shadow);
-      }
-
-      .photoSmall {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 58%;
-        height: 285px;
-        border-radius: 34px;
-        object-fit: cover;
-        border: 10px solid rgba(8, 11, 19, 0.82);
-        box-shadow: 0 20px 70px rgba(0,0,0,0.45);
-      }
-
-      .floatingCard {
-        position: absolute;
-        right: 24px;
-        bottom: 44px;
-        width: 265px;
-        padding: 20px;
-        border-radius: 26px;
-        background: rgba(8, 12, 24, 0.78);
-        border: 1px solid rgba(255,255,255,0.17);
-        backdrop-filter: blur(22px);
-        box-shadow: var(--shadow);
-      }
-
-      .floatingCard span {
-        display: block;
-        color: var(--muted);
-        font-size: 13px;
-        margin-bottom: 9px;
-      }
-
-      .floatingCard strong {
-        display: block;
-        font-size: 31px;
-        letter-spacing: -0.04em;
-        color: var(--gold2);
-      }
-
-      .floatingCard p {
-        margin-top: 6px;
-        color: var(--muted);
-        line-height: 1.45;
-        font-size: 14px;
-      }
-
-      .section {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 110px clamp(20px, 4vw, 0px);
-      }
-
-      .intro { text-align: center; }
-      .intro .sectionLabel { margin: 0 auto; }
-
-      h2 {
-        margin-top: 20px;
-        font-size: clamp(36px, 5vw, 64px);
-        line-height: 1;
-        letter-spacing: -0.055em;
-      }
-
-      .intro > p,
-      .sectionTop > p,
-      .splitText > p,
-      .cta p {
-        margin-top: 22px;
-        color: var(--muted);
-        font-size: 18px;
-        line-height: 1.75;
-      }
-
-      .intro > p {
-        max-width: 820px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .stats {
-        margin-top: 48px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-      }
-
-      .stat {
-        padding: 32px;
-        border-radius: 28px;
-        border: 1px solid var(--line);
-        background: var(--card);
-      }
-
-      .stat strong {
-        display: block;
-        font-size: 34px;
-        letter-spacing: -0.04em;
-        color: var(--gold2);
-      }
-
-      .stat span {
-        display: block;
-        margin-top: 9px;
-        color: var(--muted);
-        line-height: 1.5;
-      }
-
-      .sectionTop {
-        display: grid;
-        grid-template-columns: 1fr 0.82fr;
-        gap: 56px;
-        align-items: end;
-      }
-
-      .cards {
-        margin-top: 46px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-      }
-
-      .card {
-        min-height: 285px;
-        padding: 28px;
-        border-radius: 30px;
-        border: 1px solid var(--line);
-        background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.045));
-        transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(244, 212, 139, 0.45);
-        background: var(--cardStrong);
-      }
-
-      .cardNumber {
-        width: 48px;
-        height: 48px;
-        border-radius: 17px;
-        display: grid;
-        place-items: center;
-        background: rgba(196, 154, 74, 0.12);
-        color: var(--gold2);
-        font-weight: 900;
-      }
-
-      h3 {
-        margin-top: 28px;
-        font-size: 24px;
-        letter-spacing: -0.035em;
-      }
-
-      .card p {
-        margin-top: 14px;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .imageBand {
-        max-width: 1180px;
-        margin: 15px auto 0;
-        padding: 0 clamp(20px, 4vw, 0px);
-        display: grid;
-        grid-template-columns: 0.85fr 1.15fr;
-        gap: 18px;
-      }
-
-      .imageBand img {
-        width: 100%;
-        height: 430px;
-        object-fit: cover;
-        border-radius: 36px;
-        border: 1px solid rgba(255,255,255,0.14);
-        box-shadow: var(--shadow);
-      }
-
-      .imageBand .textOverlay {
-        position: relative;
-        overflow: hidden;
-        border-radius: 36px;
-        min-height: 430px;
-        border: 1px solid rgba(255,255,255,0.14);
-        background: url("/assets/photo1.jpg") center / cover no-repeat;
-        box-shadow: var(--shadow);
-      }
-
-      .imageBand .textOverlay::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(90deg, rgba(8, 11, 19, 0.90), rgba(8, 11, 19, 0.28));
-      }
-
-      .imageBand .textOverlay div {
-        position: relative;
-        z-index: 2;
-        max-width: 430px;
-        padding: 42px;
-      }
-
-      .imageBand h2 {
-        font-size: clamp(32px, 4vw, 54px);
-      }
-
-      .imageBand p {
-        margin-top: 18px;
-        color: var(--muted);
-        line-height: 1.75;
-        font-size: 17px;
-      }
-
-      .split {
-        max-width: 1180px;
-        margin: 80px auto 0;
-        padding: 0 clamp(20px, 4vw, 0px);
-        display: grid;
-        grid-template-columns: 0.94fr 1.06fr;
-        gap: 56px;
-        align-items: center;
-      }
-
-      .visualPanel {
-        border: 1px solid var(--line);
-        border-radius: 38px;
-        background:
-          radial-gradient(circle at 20% 20%, rgba(196, 154, 74, 0.16), transparent 26rem),
-          rgba(255, 255, 255, 0.055);
-        padding: 18px;
-        box-shadow: var(--shadow);
-      }
-
-      .visualPanel img {
-        width: 100%;
-        height: 520px;
-        object-fit: cover;
-        border-radius: 26px;
-        display: block;
-      }
-
-      .benefits {
-        margin-top: 34px;
-        display: grid;
-        gap: 14px;
-      }
-
-      .benefits div {
-        display: grid;
-        grid-template-columns: 26px 1fr;
-        gap: 14px;
-        padding: 18px;
-        border-radius: 22px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid var(--line);
-      }
-
-      .benefits span {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--gold2), #a56f24);
-        margin-top: 3px;
-      }
-
-      .benefits p {
-        color: var(--muted);
-        line-height: 1.65;
-      }
-
-      .timeline {
-        margin-top: 50px;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 12px;
-      }
-
-      .timelineItem {
-        min-height: 190px;
-        padding: 20px;
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        background: rgba(255, 255, 255, 0.065);
-      }
-
-      .timelineItem span {
-        width: 42px;
-        height: 42px;
-        border-radius: 15px;
-        display: grid;
-        place-items: center;
-        background: rgba(196, 154, 74, 0.14);
-        color: var(--gold2);
-        font-weight: 900;
-      }
-
-      .timelineItem p {
-        margin-top: 20px;
-        color: var(--muted);
-        line-height: 1.55;
-      }
-
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Clinic Growth pomaga klinikom chirurgii estetycznej pozyskiwać wartościowe zapytania dzięki kampaniom Meta Ads, Google Ads, landing page i uporządkowanemu procesowi obsługi leadów." />
+  <title>Clinic Growth | Marketing dla klinik chirurgii estetycznej</title>
+  <link rel="icon" href="/favicon.svg" />
+  <style>
+    :root {
+      --bg: #08101b;
+      --bg-soft: #0e1727;
+      --panel: rgba(255,255,255,0.07);
+      --panel-strong: rgba(255,255,255,0.10);
+      --line: rgba(255,255,255,0.14);
+      --line-soft: rgba(255,255,255,0.09);
+      --text: #f8fafc;
+      --muted: #c2cad8;
+      --gold: #cfa158;
+      --gold-soft: #edd090;
+      --shadow: 0 24px 90px rgba(0,0,0,0.35);
+      --radius-xl: 36px;
+      --radius-lg: 28px;
+      --radius-md: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 4%, rgba(207,161,88,0.16), transparent 35rem),
+        radial-gradient(circle at 88% 0%, rgba(42,66,103,0.20), transparent 30rem),
+        var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,16,27,0.97) 0%, rgba(8,16,27,0.88) 42%, rgba(8,16,27,0.60) 68%, rgba(8,16,27,0.34) 100%),
+        url("/assets/photo_hero.jpg") center right / cover no-repeat;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 260px;
+      background: linear-gradient(180deg, transparent, var(--bg));
+      z-index: -1;
+    }
+
+    .topbar { padding-top: 28px; }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(9, 14, 24, 0.68);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+    }
+
+    .brand {
+      width: 74px;
+      height: 74px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      flex: 0 0 auto;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,0.14));
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      padding: 12px 16px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.07);
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 14px 18px;
+      border-radius: 999px;
+      color: #111827;
+      font-size: 15px;
+      font-weight: 800;
+      white-space: nowrap;
+      background: linear-gradient(135deg, var(--gold-soft), #b78334);
+      box-shadow: 0 14px 30px rgba(207,161,88,0.28);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: end;
+      min-height: calc(100vh - 118px);
+      padding-top: 64px;
+      padding-bottom: 92px;
+    }
+
+    .hero-copy { max-width: 760px; }
+
+    .eyebrow, .section-label {
+      width: fit-content;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(237,208,144,0.36);
+      background: rgba(207,161,88,0.11);
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1,h2,h3,p { margin: 0; }
+
+    h1 {
+      margin-top: 22px;
+      max-width: 760px;
+      font-size: clamp(46px, 7vw, 84px);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+    }
+
+    .hero-copy > p {
+      margin-top: 26px;
+      max-width: 650px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 17px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: #111827;
+      background: linear-gradient(135deg, var(--gold-soft), #ad792b);
+      box-shadow: 0 18px 42px rgba(207,161,88,0.27);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero-tags {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-tags span {
+      padding: 10px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line-soft);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-stats {
+      margin-top: 46px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+      max-width: 780px;
+    }
+
+    .hero-stat {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(9,14,24,0.56);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-stat strong {
+      display: block;
+      color: var(--gold-soft);
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .section { padding: 110px 0 0; }
+    .section.center { text-align: center; }
+    .section.center .section-label { margin: 0 auto; }
+
+    h2 {
+      margin-top: 20px;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .section-subtitle,
+    .split-copy > p,
+    .cta-copy p,
+    .copy-panel p {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.78;
+    }
+
+    .section-subtitle {
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stats-row,
+    .services-grid,
+    .popular-grid,
+    .timeline {
+      margin-top: 48px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .stats-row { grid-template-columns: repeat(3,1fr); }
+    .services-grid { grid-template-columns: repeat(3,1fr); }
+    .popular-grid { grid-template-columns: repeat(5,1fr); }
+    .timeline { grid-template-columns: repeat(6,1fr); gap: 12px; }
+
+    .stat-box,
+    .service-card,
+    .popular-card,
+    .timeline-item {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .stat-box {
+      padding: 32px;
+      border-radius: var(--radius-lg);
+    }
+
+    .stat-box strong {
+      display: block;
+      color: var(--gold-soft);
+      font-size: 34px;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-box span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .service-card {
+      padding: 28px;
+      border-radius: 30px;
+      min-height: 286px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      background: var(--panel-strong);
+      border-color: rgba(237,208,144,0.34);
+    }
+
+    .service-no {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(207,161,88,0.13);
+      color: var(--gold-soft);
+      font-weight: 900;
+    }
+
+    h3 {
+      margin-top: 24px;
+      font-size: 24px;
+      letter-spacing: -0.035em;
+    }
+
+    .service-card p,
+    .popular-card p,
+    .timeline-item p {
+      margin-top: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .popular-card {
+      padding: 22px 20px;
+      border-radius: 24px;
+      min-height: 210px;
+    }
+
+    .popular-card strong {
+      display: block;
+      color: var(--gold-soft);
+      font-size: 19px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .image-and-copy {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .image-and-copy img,
+    .image-panel img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+    }
+
+    .copy-panel {
+      padding: 42px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(207,161,88,0.14), transparent 18rem),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+    }
+
+    .split {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .image-panel {
+      padding: 18px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(207,161,88,0.15), transparent 18rem),
+        rgba(255,255,255,0.05);
+      box-shadow: var(--shadow);
+    }
+
+    .image-panel img {
+      min-height: 520px;
+      border-radius: 24px;
+      box-shadow: none;
+    }
+
+    .benefits {
+      margin-top: 34px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .benefits div {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .benefits span {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-soft), #a56f24);
+      margin-top: 2px;
+    }
+
+    .benefits p { color: var(--muted); line-height: 1.65; }
+
+    .timeline-item {
+      min-height: 190px;
+      padding: 20px;
+      border-radius: 26px;
+    }
+
+    .timeline-item span {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: rgba(207,161,88,0.15);
+      color: var(--gold-soft);
+      font-weight: 900;
+    }
+
+    .cta {
+      margin-top: 80px;
+      margin-bottom: 40px;
+      padding: clamp(28px, 5vw, 56px);
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 56px;
+      align-items: start;
+      border-radius: 40px;
+      border: 1px solid rgba(207,161,88,0.28);
+      background:
+        radial-gradient(circle at 14% 0%, rgba(207,161,88,0.16), transparent 26rem),
+        linear-gradient(135deg, rgba(255,255,255,0.11), rgba(255,255,255,0.045));
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(7,11,21,0.55);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus, textarea:focus { border-color: rgba(237,208,144,0.72); }
+    textarea { min-height: 130px; resize: vertical; }
+
+    .contact-form button {
+      border: 0;
+      padding: 17px 24px;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 800;
+      color: #111827;
+      background: linear-gradient(135deg, var(--gold-soft), #ad792b);
+      box-shadow: 0 18px 42px rgba(207,161,88,0.27);
+      cursor: pointer;
+    }
+
+    .contact-form small {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    footer { padding: 8px 0 44px; }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      border-top: 1px solid var(--line-soft);
+      padding-top: 26px;
+    }
+
+    .footer-logo {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-logo img {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+    }
+
+    @media (max-width: 1080px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .popular-grid { grid-template-columns: 1fr 1fr; }
+      .timeline { grid-template-columns: repeat(3, 1fr); }
+      .image-and-copy,
+      .split,
       .cta {
-        max-width: 1180px;
-        margin: 80px auto 0;
-        padding: clamp(28px, 5vw, 56px);
-        border: 1px solid rgba(196, 154, 74, 0.28);
-        border-radius: 42px;
-        background:
-          radial-gradient(circle at 14% 0%, rgba(196, 154, 74, 0.2), transparent 28rem),
-          linear-gradient(135deg, rgba(255, 255, 255, 0.115), rgba(255, 255, 255, 0.045));
-        display: grid;
-        grid-template-columns: 0.95fr 1.05fr;
-        gap: 56px;
-        align-items: start;
-        box-shadow: var(--shadow);
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 28px;
       }
 
-      .contactForm {
-        display: grid;
-        gap: 14px;
-      }
+      .brand { width: 68px; height: 68px; }
 
-      label {
-        display: grid;
-        gap: 8px;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      input,
-      textarea {
+      .nav-links {
         width: 100%;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: rgba(7, 11, 21, 0.55);
-        color: var(--text);
-        padding: 16px 18px;
-        outline: none;
-        font: inherit;
+        justify-content: center;
       }
 
-      input:focus,
-      textarea:focus {
-        border-color: rgba(244, 212, 139, 0.72);
+      .nav-cta {
+        width: 100%;
+        text-align: center;
       }
 
-      textarea {
-        min-height: 126px;
-        resize: vertical;
+      h1 { font-size: clamp(42px, 13vw, 62px); }
+
+      .hero-stats,
+      .stats-row,
+      .services-grid,
+      .popular-grid,
+      .timeline {
+        grid-template-columns: 1fr;
       }
 
-      .contactForm small {
-        color: var(--muted);
-        line-height: 1.5;
+      .btn { width: 100%; }
+      .copy-panel { padding: 30px; }
+
+      .image-and-copy img,
+      .image-panel img {
+        min-height: 320px;
       }
 
-      footer {
-        max-width: 1180px;
-        margin: 34px auto 0;
-        padding: 36px clamp(20px, 4vw, 0px) 44px;
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        color: var(--muted);
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
       }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container topbar">
+      <nav class="nav">
+        <a class="brand" href="#" aria-label="Clinic Growth">
+          <img src="/assets/logo.png" alt="Clinic Growth logo" />
+        </a>
 
-      @media (max-width: 980px) {
-        .heroGrid,
-        .sectionTop,
-        .split,
-        .cta,
-        .imageBand {
-          grid-template-columns: 1fr;
-        }
-
-        .heroGrid { margin-top: 62px; }
-        .heroVisual { min-height: 500px; }
-        .cards { grid-template-columns: 1fr 1fr; }
-        .timeline { grid-template-columns: repeat(2, 1fr); }
-        .stats { grid-template-columns: 1fr; }
-      }
-
-      @media (max-width: 680px) {
-        .nav {
-          align-items: flex-start;
-          border-radius: 26px;
-        }
-
-        .brand img {
-          width: 42px;
-          height: 42px;
-        }
-
-        .navLinks { display: none; }
-        h1 { font-size: clamp(42px, 16vw, 64px); }
-
-        .cards,
-        .timeline {
-          grid-template-columns: 1fr;
-        }
-
-        .heroActions { display: grid; }
-
-        .button,
-        button {
-          width: 100%;
-          text-align: center;
-        }
-
-        .photoStack {
-          min-height: 470px;
-        }
-
-        .photoMain {
-          width: 88%;
-          height: 360px;
-        }
-
-        .photoSmall {
-          width: 68%;
-          height: 230px;
-        }
-
-        .floatingCard {
-          right: 0;
-          width: 240px;
-        }
-
-        .imageBand img,
-        .imageBand .textOverlay,
-        .visualPanel img {
-          height: 360px;
-        }
-
-        .imageBand .textOverlay div {
-          padding: 28px;
-        }
-
-        footer { flex-direction: column; }
-      }
-    </style>
-  </head>
-
-  <body>
-    <main>
-      <section class="hero">
-        <nav class="nav">
-          <a class="brand" href="#" aria-label="Clinic Growth">
-            <img src="/assets/clinic-growth-logo.png" alt="Clinic Growth logo" />
-            <span>Clinic Growth</span>
-          </a>
-          <div class="navLinks">
-            <a href="#specjalizacja">Specjalizacja</a>
-            <a href="#proces">Proces</a>
-            <a href="#kontakt">Kontakt</a>
-          </div>
-        </nav>
-
-        <div class="heroGrid">
-          <div class="heroText">
-            <div class="eyebrow">Marketing dla klinik chirurgii estetycznej</div>
-            <h1>Pomagamy klinikom pozyskiwać więcej wartościowych zapytań od pacjentów</h1>
-            <p>
-              Tworzymy i prowadzimy kampanie reklamowe dla klinik chirurgii estetycznej, które chcą zwiększyć liczbę konsultacji, uporządkować komunikację i lepiej wykorzystać potencjał swoich usług.
-            </p>
-
-            <div class="heroActions">
-              <a class="button primary" href="#kontakt">Porozmawiajmy o kampanii</a>
-              <a class="button secondary" href="#oferta">Zobacz zakres współpracy</a>
-            </div>
-
-            <div class="trust">
-              <span>Meta Ads</span>
-              <span>Google Ads</span>
-              <span>Landing page</span>
-              <span>Obsługa leadów</span>
-            </div>
-          </div>
-
-          <div class="heroVisual">
-            <div class="photoStack">
-              <img class="photoMain" src="/assets/photo2.jpg" alt="Zespół chirurgiczny podczas pracy" />
-              <img class="photoSmall" src="/assets/photo3.jpg" alt="Specjalistka medyczna podczas zabiegu" />
-              <div class="floatingCard">
-                <span>Cel kampanii</span>
-                <strong>jakościowe zapytania</strong>
-                <p>Od osób realnie zainteresowanych konsultacją i konkretnymi usługami kliniki.</p>
-              </div>
-            </div>
-          </div>
+        <div class="nav-links">
+          <a href="#specjalizacja">Specjalizacja</a>
+          <a href="#uslugi">Usługi</a>
+          <a href="#zabiegi">Najpopularniejsze zabiegi</a>
+          <a href="#proces">Proces</a>
         </div>
-      </section>
 
-      <section class="section intro" id="specjalizacja">
-        <div class="sectionLabel">W czym się specjalizujemy</div>
-        <h2>Łączymy reklamę, komunikację i proces sprzedaży w jednym systemie</h2>
+        <a class="nav-cta" href="#kontakt">Umów rozmowę</a>
+      </nav>
+    </div>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Marketing dla klinik chirurgii estetycznej</div>
+        <h1>Pozyskuj więcej wartościowych zapytań do kliniki i promuj usługi, które naprawdę się sprzedają</h1>
         <p>
-          Sama reklama nie wystarczy, jeśli pacjent trafia na słabą stronę, formularz zbiera przypadkowe kontakty, a zespół nie ma jasnego procesu obsługi zapytań. Dlatego patrzymy na pozyskiwanie pacjentów szerzej.
+          Prowadzimy kampanie Meta Ads i Google Ads dla klinik chirurgii estetycznej. Pomagamy dobrać najważniejsze usługi do promocji, przygotować komunikację zgodną z realiami branży medycznej i zbudować skuteczny system pozyskiwania pacjentów.
         </p>
 
-        <div class="stats">
-          <div class="stat">
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#kontakt">Porozmawiajmy o kampanii</a>
+          <a class="btn btn-secondary" href="#uslugi">Zobacz zakres współpracy</a>
+        </div>
+
+        <div class="hero-tags">
+          <span>Meta Ads</span>
+          <span>Google Ads</span>
+          <span>Landing page</span>
+          <span>Obsługa leadów</span>
+          <span>Komunikacja premium</span>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
             <strong>3</strong>
-            <span>usługi promowane w pierwszym etapie</span>
+            <span>usługi promowane w pierwszym etapie współpracy</span>
           </div>
-          <div class="stat">
+          <div class="hero-stat">
             <strong>2</strong>
-            <span>miesiące testowej współpracy</span>
+            <span>miesiące kampanii testowej przed dalszym skalowaniem</span>
           </div>
-          <div class="stat">
+          <div class="hero-stat">
             <strong>Meta + Google</strong>
-            <span>dwa główne źródła pozyskiwania zapytań</span>
+            <span>dwa główne źródła pozyskiwania jakościowych zapytań</span>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section class="section services" id="oferta">
-        <div class="sectionTop">
-          <div>
-            <div class="sectionLabel">Zakres współpracy</div>
-            <h2>Co możemy zrobić dla Twojej kliniki</h2>
+  <main>
+    <section class="section center" id="specjalizacja">
+      <div class="container">
+        <div class="section-label">W czym się specjalizujemy</div>
+        <h2>Łączymy reklamę, komunikację i proces obsługi pacjenta w jeden spójny system</h2>
+        <p class="section-subtitle">
+          Sama reklama nie wystarczy, jeśli pacjent trafia na słabą stronę, formularz zbiera przypadkowe kontakty, a zespół nie ma jasnego procesu obsługi zapytań. Dlatego patrzymy na pozyskiwanie pacjentów szerzej i projektujemy cały układ działań.
+        </p>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <strong>Precyzyjny dobór usług</strong>
+            <span>Pomagamy wybrać zabiegi, które mają największy potencjał reklamowy i sprzedażowy.</span>
           </div>
-          <p>
-            Przygotowujemy działania tak, aby klinika nie tylko miała więcej zapytań, ale też lepiej rozumiała, które usługi warto promować i jak prowadzić pacjenta od pierwszego kontaktu do konsultacji.
-          </p>
+          <div class="stat-box">
+            <strong>Bezpieczna komunikacja</strong>
+            <span>Treści i kreacje budujemy w sposób spójny z charakterem kliniki i ograniczeniami branży medycznej.</span>
+          </div>
+          <div class="stat-box">
+            <strong>Lepsza jakość leadów</strong>
+            <span>Nie chodzi tylko o liczbę formularzy, ale o zapytania od osób realnie zainteresowanych konsultacją.</span>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="cards">
-          <article class="card">
-            <div class="cardNumber">01</div>
-            <h3>Strategia pozyskiwania pacjentów</h3>
-            <p>Układamy plan promocji dla konkretnych usług, analizujemy potencjał rynku, konkurencję, lokalizację kliniki oraz to, które zabiegi mają największy sens reklamowy.</p>
-          </article>
-          <article class="card">
-            <div class="cardNumber">02</div>
-            <h3>Kampanie Meta Ads i Google Ads</h3>
-            <p>Prowadzimy kampanie na Facebooku, Instagramie i w Google, tak aby generować wartościowe zapytania od osób realnie zainteresowanych konsultacją.</p>
-          </article>
-          <article class="card">
-            <div class="cardNumber">03</div>
-            <h3>Landing page dla wybranych usług</h3>
-            <p>Tworzymy strony sprzedażowe dla usług, które mają uporządkować komunikację, zwiększyć zaufanie i ułatwić pacjentowi zostawienie kontaktu.</p>
-          </article>
-          <article class="card">
-            <div class="cardNumber">04</div>
-            <h3>Bezpieczna komunikacja medyczna</h3>
-            <p>Przygotowujemy treści z uwzględnieniem ograniczeń w branży medycznej, bez agresywnych obietnic i bez komunikacji, która mogłaby szkodzić wizerunkowi kliniki.</p>
-          </article>
-          <article class="card">
-            <div class="cardNumber">05</div>
-            <h3>Obsługa leadów i proces sprzedaży</h3>
-            <p>Pomagamy uporządkować kontakt z osobami, które zostawiły zapytanie, tworzymy skrypty rozmów, automatyzacje oraz prosty proces obsługi pacjenta.</p>
-          </article>
-          <article class="card">
-            <div class="cardNumber">06</div>
-            <h3>Raportowanie i optymalizacja</h3>
-            <p>Sprawdzamy, które usługi, reklamy i kanały przynoszą najlepsze zapytania, a następnie rozwijamy te działania, które mają największy potencjał.</p>
-          </article>
+    <section class="section" id="uslugi">
+      <div class="container">
+        <div class="section-label">Zakres współpracy</div>
+        <h2>Co możemy zrobić dla Twojej kliniki</h2>
+        <p class="section-subtitle" style="margin-left:0; margin-right:0; max-width:900px;">
+          Przygotowujemy działania tak, aby klinika nie tylko miała więcej zapytań, ale też lepiej rozumiała, które usługi warto promować i jak prowadzić pacjenta od pierwszego kontaktu do konsultacji.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card"><div class="service-no">01</div><h3>Strategia pozyskiwania pacjentów</h3><p>Analizujemy potencjał rynku, lokalizację kliniki i ofertę zabiegów, aby wybrać usługi z największą szansą na skuteczną promocję.</p></article>
+          <article class="service-card"><div class="service-no">02</div><h3>Kampanie Meta Ads i Google Ads</h3><p>Prowadzimy reklamy na Facebooku, Instagramie i w Google, skupiając się na jakości zapytań i kosztach pozyskania kontaktu.</p></article>
+          <article class="service-card"><div class="service-no">03</div><h3>Landing page dla konkretnych usług</h3><p>Tworzymy strony sprzedażowe, które budują zaufanie, porządkują komunikację i zwiększają szansę na pozostawienie kontaktu.</p></article>
+          <article class="service-card"><div class="service-no">04</div><h3>Komunikacja dopasowana do branży</h3><p>Przygotowujemy treści i przekaz premium, bez nachalnej sprzedaży i bez obietnic, które mogłyby osłabić wiarygodność kliniki.</p></article>
+          <article class="service-card"><div class="service-no">05</div><h3>Obsługa leadów i proces sprzedaży</h3><p>Pomagamy uporządkować formularze, kontakt z pacjentem, skrypty rozmów i prosty system pracy z zapytaniami.</p></article>
+          <article class="service-card"><div class="service-no">06</div><h3>Raportowanie i optymalizacja</h3><p>Regularnie analizujemy wyniki kampanii, sprawdzamy jakość leadów i rozwijamy działania tam, gdzie widać największy potencjał.</p></article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="imageBand">
-        <img src="/assets/photo1.jpg" alt="Chirurg podczas zabiegu w sali operacyjnej" />
-        <div class="textOverlay">
-          <div>
-            <div class="sectionLabel">Marketing premium</div>
-            <h2>Komunikacja, która buduje zaufanie przed pierwszym kontaktem</h2>
+    <section class="section center" id="zabiegi">
+      <div class="container">
+        <div class="section-label">Najpopularniejsze zabiegi</div>
+        <h2>Usługi, które najczęściej warto rozważyć w promocji</h2>
+        <p class="section-subtitle">
+          Wśród najpopularniejszych zabiegów chirurgii estetycznej bardzo często pojawiają się liposukcja, powiększanie piersi, plastyka brzucha, lifting piersi i plastyka powiek. To właśnie wokół takich usług zwykle buduje się pierwsze kampanie reklamowe.
+        </p>
+
+        <div class="popular-grid">
+          <article class="popular-card"><strong>Liposukcja</strong><p>Jedna z najczęściej wykonywanych procedur. Dobrze sprawdza się w kampaniach nastawionych na konkretne potrzeby i szybkie zapytania.</p></article>
+          <article class="popular-card"><strong>Powiększanie piersi</strong><p>Usługa bardzo popularna i silnie konkurencyjna, dlatego wymaga dopracowanej komunikacji i mocnego wizerunku kliniki.</p></article>
+          <article class="popular-card"><strong>Plastyka brzucha</strong><p>Często rozważana po ciąży lub po większej zmianie sylwetki. Dobrze działa w kampaniach opartych na konkretnej przemianie.</p></article>
+          <article class="popular-card"><strong>Lifting piersi</strong><p>Usługa wymagająca precyzyjnej komunikacji, bo pacjentki często są na etapie porównywania różnych możliwości zabiegowych.</p></article>
+          <article class="popular-card"><strong>Plastyka powiek</strong><p>Zabieg bardzo popularny i często poszukiwany. Kampanie dobrze działają, gdy przekaz jest jasny, profesjonalny i spokojny.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="image-and-copy">
+          <img src="/assets/photo_tools.jpg" alt="Narzędzia przygotowane do zabiegu w klinice" />
+          <div class="copy-panel">
+            <div class="section-label">Marketing premium</div>
+            <h2>Komunikacja, która buduje zaufanie jeszcze przed pierwszym kontaktem</h2>
             <p>
               Pacjent przed konsultacją ocenia nie tylko usługę, ale też sposób komunikacji kliniki. Dlatego dbamy o to, aby reklamy, landing page i proces kontaktu wyglądały spójnie, profesjonalnie i wiarygodnie.
             </p>
+            <p>
+              Dzięki temu klinika nie przyciąga przypadkowych formularzy, tylko osoby, które realnie rozważają konsultację i szukają miejsca, któremu mogą zaufać.
+            </p>
           </div>
         </div>
-      </section>
 
-      <section class="split">
-        <div class="visualPanel">
-          <img src="/assets/photo3.jpg" alt="Praca medyczna w klinice estetycznej" />
-        </div>
+        <div class="split">
+          <div class="image-panel">
+            <img src="/assets/photo_lights.jpg" alt="Oświetlenie sali zabiegowej w klinice" />
+          </div>
 
-        <div class="splitText">
-          <div class="sectionLabel">Dlaczego to działa</div>
-          <h2>Kampania musi być dopasowana do usług, pacjentów i realiów branży medycznej</h2>
-          <p>
-            W chirurgii estetycznej decyzja pacjenta rzadko zapada od razu. Potrzebne są zaufanie, jasna komunikacja, dobrze dobrana usługa reklamowa i szybka obsługa kontaktu. Dlatego przygotowujemy nie tylko reklamy, ale cały układ pozyskiwania zapytań.
-          </p>
+          <div class="split-copy">
+            <div class="section-label">Dlaczego to działa</div>
+            <h2>Kampania musi być dopasowana do usług, pacjentów i realiów branży medycznej</h2>
+            <p>
+              W chirurgii estetycznej decyzja pacjenta rzadko zapada od razu. Potrzebne są zaufanie, jasna komunikacja, dobrze dobrana usługa reklamowa i szybka obsługa kontaktu. Dlatego przygotowujemy nie tylko reklamy, ale cały układ pozyskiwania zapytań.
+            </p>
 
-          <div class="benefits">
-            <div>
-              <span></span>
-              <p>Komunikacja bez nachalnej sprzedaży i bez obietnic, które osłabiają wiarygodność kliniki.</p>
-            </div>
-            <div>
-              <span></span>
-              <p>Leady kierowane na konkretne usługi, zamiast ogólnej promocji kliniki bez jasnego celu.</p>
-            </div>
-            <div>
-              <span></span>
-              <p>Proces pozwalający ocenić, czy kampania ma sens przed podjęciem długiej współpracy.</p>
+            <div class="benefits">
+              <div><span></span><p>Komunikacja bez nachalnej sprzedaży i bez obietnic, które osłabiają wiarygodność kliniki.</p></div>
+              <div><span></span><p>Leady kierowane na konkretne usługi, zamiast ogólnej promocji kliniki bez jasnego celu.</p></div>
+              <div><span></span><p>Proces pozwalający ocenić, czy kampania ma sens przed podjęciem długiej współpracy.</p></div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section process" id="proces">
-        <div class="sectionTop">
-          <div>
-            <div class="sectionLabel">Proces</div>
-            <h2>Jak wygląda start współpracy</h2>
-          </div>
-          <p>
-            Najpierw sprawdzamy potencjał usług, następnie przygotowujemy kampanię testową i dopiero po analizie wyników podejmujemy decyzję o dalszym skalowaniu.
-          </p>
-        </div>
+    <section class="section" id="proces">
+      <div class="container">
+        <div class="section-label">Proces</div>
+        <h2>Jak wygląda start współpracy</h2>
+        <p class="section-subtitle" style="margin-left:0; margin-right:0; max-width:900px;">
+          Najpierw sprawdzamy potencjał usług, następnie przygotowujemy kampanię testową i dopiero po analizie wyników podejmujemy decyzję o dalszym skalowaniu działań.
+        </p>
 
         <div class="timeline">
-          <div class="timelineItem"><span>1</span><p>Analiza kliniki, usług i lokalnego rynku</p></div>
-          <div class="timelineItem"><span>2</span><p>Wybór usług z największym potencjałem</p></div>
-          <div class="timelineItem"><span>3</span><p>Przygotowanie komunikacji, reklam i landing page</p></div>
-          <div class="timelineItem"><span>4</span><p>Uruchomienie kampanii w Meta oraz Google</p></div>
-          <div class="timelineItem"><span>5</span><p>Optymalizacja kampanii i analiza jakości zapytań</p></div>
-          <div class="timelineItem"><span>6</span><p>Decyzja o dalszym skalowaniu działań</p></div>
-        </div>
-      </section>
-
-      <section class="cta" id="kontakt">
-        <div>
-          <div class="sectionLabel">Kampania testowa</div>
-          <h2>Sprawdźmy, czy Twoja klinika może pozyskiwać więcej jakościowych zapytań</h2>
-          <p>
-            Wypełnij formularz lub skontaktuj się z nami, a sprawdzimy, które usługi mają największy potencjał reklamowy i jak można przygotować bezpieczną kampanię dla Twojej kliniki.
-          </p>
+          <div class="timeline-item"><span>1</span><p>Analiza kliniki, oferty zabiegów i lokalnego rynku.</p></div>
+          <div class="timeline-item"><span>2</span><p>Wybór usług z największym potencjałem reklamowym.</p></div>
+          <div class="timeline-item"><span>3</span><p>Przygotowanie komunikacji, kreacji i landing page.</p></div>
+          <div class="timeline-item"><span>4</span><p>Uruchomienie kampanii w Meta oraz Google.</p></div>
+          <div class="timeline-item"><span>5</span><p>Optymalizacja reklam i analiza jakości zapytań.</p></div>
+          <div class="timeline-item"><span>6</span><p>Decyzja o dalszym skalowaniu najlepszych działań.</p></div>
         </div>
 
-        <form class="contactForm" name="kontakt" method="POST">
-          <label>
-            Imię i nazwisko
-            <input name="name" type="text" placeholder="Jan Kowalski" required />
-          </label>
-          <label>
-            E-mail
-            <input name="email" type="email" placeholder="kontakt@klinika.pl" required />
-          </label>
-          <label>
-            Telefon
-            <input name="phone" type="tel" placeholder="+48 000 000 000" />
-          </label>
-          <label>
-            Jakie usługi chcesz promować?
-            <textarea name="message" placeholder="Napisz krótko, czym zajmuje się klinika i jakie usługi są dla Ciebie najważniejsze."></textarea>
-          </label>
-          <button type="submit">Wyślij zapytanie</button>
-          <small>Po wysłaniu formularza wrócimy z propozycją pierwszych kroków.</small>
-        </form>
-      </section>
-    </main>
+        <div class="cta" id="kontakt">
+          <div class="cta-copy">
+            <div class="section-label">Kampania testowa</div>
+            <h2>Sprawdźmy, które usługi Twojej kliniki warto promować w pierwszej kolejności</h2>
+            <p>
+              Wypełnij formularz lub skontaktuj się z nami, a sprawdzimy, które zabiegi mają największy potencjał reklamowy i jak można przygotować skuteczną kampanię dla Twojej kliniki.
+            </p>
+          </div>
+
+          <form class="contact-form" method="POST">
+            <label>Imię i nazwisko<input type="text" name="name" placeholder="Jan Kowalski" required /></label>
+            <label>E-mail<input type="email" name="email" placeholder="kontakt@klinika.pl" required /></label>
+            <label>Telefon<input type="tel" name="phone" placeholder="+48 000 000 000" /></label>
+            <label>Jakie usługi chcesz promować?<textarea name="message" placeholder="Napisz krótko, czym zajmuje się klinika i jakie zabiegi są dla Ciebie najważniejsze."></textarea></label>
+            <button type="submit">Wyślij zapytanie</button>
+            <small>Po wysłaniu formularza wrócimy z propozycją pierwszych kroków.</small>
+          </form>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <div class="brand">
-        <img src="/assets/clinic-growth-logo.png" alt="Clinic Growth logo" />
-        <span>Clinic Growth</span>
+      <div class="container footer-inner">
+        <div class="footer-logo">
+          <img src="/assets/logo.png" alt="Clinic Growth logo" />
+        </div>
+        <p>Clinic Growth | Marketing dla klinik chirurgii estetycznej</p>
       </div>
-      <p>Marketing dla klinik chirurgii estetycznej.</p>
     </footer>
-  </body>
+  </main>
+</body>
 </html>
