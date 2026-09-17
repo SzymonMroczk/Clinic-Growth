@@ -972,23 +972,74 @@
     }
 
 
-    /* Language switcher */
+    /* Language switcher (dropdown) */
     .i18n-pending body { visibility: hidden; }
 
     .lang-switch {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      padding: 4px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: #ffffff;
+      position: relative;
       flex: 0 0 auto;
     }
 
+    .lang-current {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 44px;
+      padding: 0 10px 0 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lang-current:hover,
+    .lang-current[aria-expanded="true"] {
+      border-color: rgba(182,132,54,0.35);
+      box-shadow: var(--shadow);
+    }
+
+    .lang-current:focus-visible,
+    .lang-btn:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
+    }
+
+    .lang-chevron {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    .lang-current[aria-expanded="true"] .lang-chevron { transform: rotate(180deg); }
+
+    .lang-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: -3px;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+      animation: langMenuIn 0.16s ease-out;
+    }
+
+    .lang-menu[hidden] { display: none; }
+
+    @keyframes langMenuIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .lang-btn {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       padding: 0;
       border: 0;
       border-radius: 50%;
@@ -996,31 +1047,20 @@
       display: grid;
       place-items: center;
       cursor: pointer;
-      opacity: 0.6;
-      filter: saturate(0.75);
-      transition: opacity 0.2s ease, filter 0.2s ease;
+      transition: background 0.15s ease;
     }
 
-    .lang-btn:hover { opacity: 0.85; filter: none; }
-
-    .lang-btn:focus-visible {
-      outline: 2px solid var(--text);
-      outline-offset: 1px;
-    }
-
-    .lang-btn[aria-pressed="true"] {
-      opacity: 1;
-      filter: none;
-      cursor: default;
-    }
+    .lang-btn:hover { background: var(--bg-soft); }
+    .lang-btn[hidden] { display: none; }
 
     .flag {
       position: relative;
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       overflow: hidden;
       display: block;
+      flex: 0 0 auto;
     }
 
     .flag svg { width: 100%; height: 100%; display: block; }
@@ -1033,14 +1073,6 @@
       box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.14);
     }
 
-    .lang-btn[aria-pressed="true"] .flag {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
-      overflow: visible;
-    }
-
-    .lang-btn[aria-pressed="true"] .flag svg { border-radius: 50%; }
-
     @media (min-width: 881px) and (max-width: 1080px) {
       .header-inner { gap: 12px; }
       .nav-shell { gap: 10px; }
@@ -1049,16 +1081,18 @@
       .nav-links { gap: 0; flex-wrap: nowrap; }
       .nav-links a { padding: 8px 9px; font-size: 14px; white-space: nowrap; }
       .nav-cta { padding: 11px 14px; font-size: 14px; }
-      .lang-btn { width: 32px; height: 32px; }
     }
 
     @media (max-width: 880px) {
       .lang-switch { margin-left: auto; }
-      .lang-btn { width: 40px; height: 40px; }
+      .lang-current { height: 52px; padding: 0 12px 0 12px; border-radius: 18px; }
+      .lang-btn { width: 44px; height: 44px; }
+      .lang-menu { left: -2px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .lang-btn { transition: none; }
+      .lang-menu { animation: none; }
+      .lang-chevron, .lang-current, .lang-btn { transition: none; }
     }
   </style>
 </head>
@@ -1080,10 +1114,16 @@
         <a class="nav-cta" href="#kontakt" data-i18n="nav.cta">Umów rozmowę</a>
       </div>
 
-      <div class="lang-switch" role="group" aria-label="Wybór języka" data-i18n-attr="aria-label:a11y.lang">
-        <button class="lang-btn" type="button" data-lang="pl" lang="pl" aria-label="Polski" title="Polski" aria-pressed="true"><span class="flag"><svg viewBox="0 0 16 10" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="16" height="5" fill="#ffffff"/><rect y="5" width="16" height="5" fill="#dc143c"/></svg></span></button>
-        <button class="lang-btn" type="button" data-lang="en" lang="en" aria-label="English" title="English" aria-pressed="false"><span class="flag"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="ukClip"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#ffffff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukClip)" stroke="#c8102e" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#ffffff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6"/></svg></span></button>
-        <button class="lang-btn" type="button" data-lang="tr" lang="tr" aria-label="Türkçe" title="Türkçe" aria-pressed="false"><span class="flag"><svg viewBox="0 -30000 90000 60000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path fill="#e30a17" d="m0-30000h90000v60000H0z"/><path fill="#ffffff" d="m41750 0 13568-4408-8386 11541V-7133l8386 11541zm925 8021a15000 15000 0 1 1 0-16042 12000 12000 0 1 0 0 16042z"/></svg></span></button>
+      <div class="lang-switch">
+        <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu" aria-label="Wybór języka: Polski" title="Polski">
+          <span class="flag" id="lang-current-flag"><svg viewBox="0 0 16 10" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="16" height="5" fill="#ffffff"/><rect y="5" width="16" height="5" fill="#dc143c"/></svg></span>
+          <svg class="lang-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu" id="lang-menu" role="menu" aria-label="Wybór języka" data-i18n-attr="aria-label:a11y.lang" hidden>
+          <button class="lang-btn" type="button" role="menuitem" data-lang="pl" lang="pl" aria-label="Polski" title="Polski" hidden><span class="flag"><svg viewBox="0 0 16 10" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="16" height="5" fill="#ffffff"/><rect y="5" width="16" height="5" fill="#dc143c"/></svg></span></button>
+          <button class="lang-btn" type="button" role="menuitem" data-lang="en" lang="en" aria-label="English" title="English"><span class="flag"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="ukClip"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#ffffff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukClip)" stroke="#c8102e" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#ffffff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6"/></svg></span></button>
+          <button class="lang-btn" type="button" role="menuitem" data-lang="tr" lang="tr" aria-label="Türkçe" title="Türkçe"><span class="flag"><svg viewBox="0 -30000 90000 60000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path fill="#e30a17" d="m0-30000h90000v60000H0z"/><path fill="#ffffff" d="m41750 0 13568-4408-8386 11541V-7133l8386 11541zm925 8021a15000 15000 0 1 1 0-16042 12000 12000 0 1 0 0 16042z"/></svg></span></button>
+        </div>
       </div>
 
       <button class="mobile-menu-toggle" type="button" aria-label="Otwórz menu" data-i18n-attr="aria-label:a11y.menu" aria-expanded="false" aria-controls="site-menu">

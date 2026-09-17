@@ -425,9 +425,7 @@
       });
     });
 
-    document.querySelectorAll('.lang-btn').forEach(function (btn) {
-      btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang') === lang));
-    });
+    updateSwitcher(lang, dict);
 
     // Język zapytania trafia razem z formularzem
     document.querySelectorAll('input[name="language"]').forEach(function (input) {
@@ -437,14 +435,72 @@
     root.classList.remove('i18n-pending');
   }
 
-  document.querySelectorAll('.lang-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var lang = btn.getAttribute('data-lang');
-      if (!isSupported(lang)) return;
-      writeStorage(lang);
-      applyLang(lang);
+  // --- Rozwijany przełącznik: widać aktualną flagę, pozostałe po kliknięciu ---
+  var toggle = document.querySelector('.lang-current');
+  var menu = document.getElementById('lang-menu');
+  var currentFlag = document.getElementById('lang-current-flag');
+
+  function updateSwitcher(lang, dict) {
+    if (!toggle || !menu) return;
+    var active = null;
+    menu.querySelectorAll('.lang-btn').forEach(function (btn) {
+      var isActive = btn.getAttribute('data-lang') === lang;
+      btn.hidden = isActive;
+      if (isActive) active = btn;
     });
-  });
+    if (active && currentFlag) {
+      // kopia flagi z unikalnymi id (flaga UK używa clipPath)
+      currentFlag.innerHTML = active.querySelector('.flag').innerHTML.replace(/ukClip/g, 'ukClipCurrent');
+      var name = active.getAttribute('title');
+      toggle.setAttribute('title', name);
+      toggle.setAttribute('aria-label', dict['a11y.lang'] + ': ' + name);
+    }
+  }
+
+  function setMenuOpen(open, focusToggle) {
+    if (!toggle || !menu) return;
+    menu.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open) {
+      var first = menu.querySelector('.lang-btn:not([hidden])');
+      if (first) first.focus();
+    } else if (focusToggle) {
+      toggle.focus();
+    }
+  }
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      setMenuOpen(menu.hidden);
+    });
+
+    menu.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.getAttribute('data-lang');
+        if (!isSupported(lang)) return;
+        writeStorage(lang);
+        applyLang(lang);
+        setMenuOpen(false, true);
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!menu.hidden && !e.target.closest('.lang-switch')) setMenuOpen(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.hidden) setMenuOpen(false, true);
+    });
+
+    menu.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      var items = Array.prototype.filter.call(menu.querySelectorAll('.lang-btn'), function (b) { return !b.hidden; });
+      var i = items.indexOf(document.activeElement);
+      var next = e.key === 'ArrowDown' ? (i + 1) % items.length : (i - 1 + items.length) % items.length;
+      items[next].focus();
+      e.preventDefault();
+    });
+  }
 
   detectLang().then(applyLang, function () { applyLang('pl'); });
 
