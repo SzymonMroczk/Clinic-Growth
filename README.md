@@ -1,6 +1,6 @@
 # Clinic Growth
 
-Strona landing page dla agencji marketingowej obsługującej kliniki chirurgii estetycznej.
+Strona agencji Clinic Growth — skalowanie klinik medycyny turystycznej (Turcja, Albania) o pacjentów z zagranicy.
 
 ## Uruchomienie lokalnie
 
